@@ -55,6 +55,160 @@
 
   
     
+    <h3 class="article-title"><a href="/2023/03/15/基于Linux的轻量级多线程HTTP服务器/"><span>基于Linux的轻量级多线程HTTP服务器</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2023/03/15/基于Linux的轻量级多线程HTTP服务器/" rel="bookmark">
+        <time class="entry-date published" datetime="2023-03-15T14:22:56.785Z">
+          2023-03-15
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h4 id="基于Linux的轻量级多线程HTTP服务器"><a href="#基于Linux的轻量级多线程HTTP服务器" class="headerlink" title="基于Linux的轻量级多线程HTTP服务器"></a>基于Linux的轻量级多线程HTTP服务器</h4><ol>
+<li><p>简介：此项目是基于Linux的轻量级多线程Web服务器，应用层实现了一个简单的HTTP服务器，支持静态资源访问与动态消息回显。</p>
+</li>
+<li><p>由来：这个项目是基于C++实现的HTTP1.0服务器，虽然是烂大街的webserver，不过是自己动手做的，感觉还是有意义的就放上来了。</p>
+</li>
+<li><p>编译：</p>
+<ul>
+<li><p>本人的Linux环境如下<br><img src="https://cdn.jsdelivr.net/gh/miedoge/md_pic_save/image-20230315173520599.png" alt="image-20230315173520599"></p>
+</li>
+<li><p>开发环境是vscode加这些插件<br><img src="https://cdn.jsdelivr.net/gh/miedoge/md_pic_save/image-20230315174813075.png" alt="image-20230315174813075"></p>
+</li>
+<li><p>第一步，先克隆本项目,然后给予足够的权限</p>
+</li>
+<li><pre><code class="c++">cd  httpdocs
+
+sudo chmod 600 index.html
+
+sudo chmod 600 post.html
+
+sudo chmod +X post.cgi
+</code></pre>
+</li>
+<li><p>编译执行：<br><code>g++  http.cpp -D_REENTRANT~ -o http1 -lpthread</code></p>
+</li>
+<li><p><code>./http1 8888</code></p>
+</li>
+<li><p>然后访问 127.0.0.1:8888/index.html 即可.</p>
+</li>
+<li><p><img src="https://cdn.jsdelivr.net/gh/miedoge/md_pic_save/image-20230315175856045.png" alt="image-20230315175856045"></p>
+</li>
+<li><p><img src="https://cdn.jsdelivr.net/gh/miedoge/md_pic_save/image-20230315180004022.png" alt="image-20230315180004022"></p>
+</li>
+<li><p><img src="https://cdn.jsdelivr.net/gh/miedoge/md_pic_save/image-20230315180155470.png" alt="image-20230315180155470"></p>
+</li>
+</ul>
+</li>
+<li><p>目前存在BUG：post.cgi脚本无法正确触发，测试搜索了别人的项目进行学习，也是一样触发不了，不知道是foxfire浏览器的问题还是环境的问题，如果有时间会努力寻找解决方案。</p>
+</li>
+<li><p>接下来会试试boost/asio的项目进行练手.</p>
+</li>
+<li><p>项目地址:<a target="_blank" rel="noopener" href="https://github.com/miedoge/MyNoobWebServer">https://github.com/miedoge/MyNoobWebServer</a></p>
+</li>
+</ol>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2023/03/15/基于《TCPip-网络编程》的群聊聊天室/"><span>基于《TCP/ip 网络编程》的群聊聊天室</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2023/03/15/基于《TCPip-网络编程》的群聊聊天室/" rel="bookmark">
+        <time class="entry-date published" datetime="2023-03-15T14:22:56.782Z">
+          2023-03-15
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h4 id="基于《TCP-ip-网络编程》的群聊聊天室"><a href="#基于《TCP-ip-网络编程》的群聊聊天室" class="headerlink" title="基于《TCP/ip 网络编程》的群聊聊天室"></a>基于《TCP/ip 网络编程》的群聊聊天室</h4><ol>
+<li><p>此项目是基于 Linux 的轻量级多线程群聊，应用层实现了一个简单的在线控制台聊天室，支持多人文字进行通信，目</p>
+<p>前暂时没有 UI，后续会逐渐改善，添加功能。</p>
+</li>
+<li><p>项目地址:<a target="_blank" rel="noopener" href="https://github.com/miedoge/TINPN/tree/master/ch18">https://github.com/miedoge/TINPN/tree/master/ch18</a></p>
+</li>
+<li><p>克隆完本项目之后，进行编译</p>
+</li>
+<li><p><code>g++ mul_chat_server.cpp -D_REENTRANT -o mul_chat_server -lpthread</code><br><code>g++ mul_chat_server.cpp -D_REENTRANT -o mul_chat_server -lpthread</code></p>
+</li>
+<li><p>然后先启动服务端<br><code>./mul_chat_server 8188</code><br>启动客户端并且加入昵称<br><code>./mul_chat_client 127.0.0.1 8188 name</code></p>
+</li>
+<li><p>效果如图<br><img src="https://cdn.jsdelivr.net/gh/miedoge/md_pic_save/image-20230315221544706.png" alt="image-20230315221544706"></p>
+</li>
+<li><p>项目的主要思路是：</p>
+<p>1.利用多线程机制提供服务，增加并行服务数量</p>
+<p>2.使用锁来避免多线程时通信不同步的问题。</p>
+<p>个人收获：对于多线程编程有了更进一步的理解，对于 c++端的网络编程编写有了一定理解。</p>
+<p>后续有根据这个框架进行QT编写一个真正的群聊室的想法，先给自己挖个坑吧。</p>
+</li>
+</ol>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
     <h3 class="article-title"><a href="/2023/03/14/基于QT的轻量级天气预报桌面端软件/"><span>Fox_weather 基于Qt的简易天气预报桌面端应用</span></a></h3>
     
   
@@ -100,64 +254,6 @@
 <li><p>项目开源地址:<a target="_blank" rel="noopener" href="https://github.com/miedoge/fox_weather">https://github.com/miedoge/fox_weather</a><br>可以直接下载或者clone fox_weather.zip进行试用,而源码在fox_weather文件夹里。</p>
 </li>
 </ol>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2023/03/14/hello-world/"><span>Hello World</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2023/03/14/hello-world/" rel="bookmark">
-        <time class="entry-date published" datetime="2023-03-14T13:12:41.393Z">
-          2023-03-14
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 
       
     </div>
